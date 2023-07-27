@@ -3,11 +3,40 @@ let opnum1;
 let op;
 let displayVal = (document.querySelector("#display").innerHTML = "");
 
+document.querySelector("#clear").addEventListener("click", () => {
+  clearDisplay();
+});
+
+document.querySelector("#plus").addEventListener("click", () => {
+  handleOperation("+");
+});
+
+document.querySelector("#minus").addEventListener("click", () => {
+  handleOperation("-");
+});
+
+document.querySelector("#multiplication").addEventListener("click", () => {
+  handleOperation("*");
+});
+
+document.querySelector("#division").addEventListener("click", () => {
+  handleOperation("/");
+});
+
+document.querySelector("#equals").addEventListener("click", () => {
+  handleEquals();
+});
+
 document.querySelectorAll(".number").forEach((button) => {
   button.addEventListener("click", () => {
     input += button.innerHTML;
     display();
   });
+});
+
+document.querySelector("#decimal").addEventListener("click", () => {
+  input += ".";
+  display();
 });
 
 function operate(op, num1, num2) {
@@ -49,6 +78,8 @@ function display() {
 }
 
 function clearDisplay() {
+  opnum1 = 0;
+  let displayVal = (document.querySelector("#display").innerHTML = "");
   input = "";
   display();
 }
@@ -74,27 +105,3 @@ function handleEquals() {
     op = null;
   }
 }
-
-document.querySelector("#clear").addEventListener("click", () => {
-  clearDisplay();
-});
-
-document.querySelector("#plus").addEventListener("click", () => {
-  handleOperation("+");
-});
-
-document.querySelector("#minus").addEventListener("click", () => {
-  handleOperation("-");
-});
-
-document.querySelector("#multiplication").addEventListener("click", () => {
-  handleOperation("*");
-});
-
-document.querySelector("#division").addEventListener("click", () => {
-  handleOperation("/");
-});
-
-document.querySelector("#equals").addEventListener("click", () => {
-  handleEquals();
-});
